@@ -1,0 +1,18 @@
+Name:          Snake
+Version:       1.0.0
+Cabal-Version: >= 1.2
+License:       BSD3
+Author:        Becky Conning
+Homepage:      https://github.com/beckyconning/haskell-snake
+Category:      Games
+Synopsis:      Simple and short implementation of a Snake game. Any pull requests which make it shorter or cleaner would be greatly appreciated : ).
+Build-type:    Simple
+
+Executable Snake
+  Build-Depends: base >= 4.6.0.1,
+                 monad-loops >= 0.4.2.1,
+                 ansi-terminal >= 0.5,
+                 async >= 2.0.1.5,
+                 random >= 1.0.1.1
+  Main-Is:       Snake.hs
+  Ghc-Options:   -Wall
