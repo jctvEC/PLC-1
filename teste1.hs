@@ -108,4 +108,38 @@ digits (a:b) = if elem a ['0'..'9'] then a:digits b else digits b
 sumPairs :: [(Int,Int)] -> [Int]
 sumPairs [] = []
 sumPairs (x:y) = addPair x:sumPairs y
- 
+
+type Pessoa =  String
+type Livro = String
+type BancoDados = [(Pessoa,Livro)]
+
+banco :: BancoDados
+banco = [("caralho","a historia da porra"), ("buceta","o caralho voador"), ("boquete","a merda por cima do predio")]
+
+--member :: [Int] -> Int -> Bool
+--member l i = if [x | x <- l, x == i] == [] then  = True 
+
+livros :: BancoDados -> Pessoa -> [Livro]
+livros bd p = [l | (p1,l) <- bd, p1 == p ]
+
+--emprestimos :: BancoDados -> Livro -> [Pessoa]
+--emprestimos = bd l = [p | (p,l1) <- bd, l1 == l ]
+
+--devolver :: BancoDados -> Pessoa -> Livro -> BancoDados
+--devolder bd pess livr = [(pessoa, livro) | (pessoa,livro) < bd, (pessoa,livro) /= (pess,livr)]
+
+
+
+
+qsort :: [Int] -> [Int]
+qsort [] = []
+qsort (a:as) = qsort [ y | y <-as , y < a] ++ [a] ++ qsort [x | x <- as, x >= a ]
+
+insert :: Int -> [Int] -> [Int]
+insert x [] = [x]
+--insert x as = [y | y <- as, y < x] ++ [x] ++ [z | z <- as, z > x]
+insert x (a:as) | x >= a = a:insert x as | otherwise = x:insert a as
+
+iSort :: [Int] -> [Int]
+iSort []=[]
+iSort (a:as) = insert a (iSort as)  
