@@ -138,7 +138,7 @@ qsort (a:as) = qsort [ y | y <-as , y < a] ++ [a] ++ qsort [x | x <- as, x >= a 
 insert :: Int -> [Int] -> [Int]
 insert x [] = [x]
 --insert x as = [y | y <- as, y < x] ++ [x] ++ [z | z <- as, z > x]
-insert x (a:as) | x >= a = a:insert x as | otherwise = x:insert a as
+insert x (a:as) | x >= a = a:insert x as | otherwise = x:(a:as)
 
 iSort :: [Int] -> [Int]
 iSort []=[]
