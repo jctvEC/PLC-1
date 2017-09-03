@@ -142,4 +142,10 @@ insert x (a:as) | x >= a = a:insert x as | otherwise = x:(a:as)
 
 iSort :: [Int] -> [Int]
 iSort []=[]
-iSort (a:as) = insert a (iSort as)  
+iSort (a:as) = insert a (iSort as)
+
+
+primo :: Integer -> Bool 
+primo 1 = False 
+primo x | (tamanhoV [ y | y <- [1..x], x`mod`y == 0, y /=x ]) > 0 = False 
+	| otherwise = True  
