@@ -148,4 +148,12 @@ iSort (a:as) = insert a (iSort as)
 primo :: Integer -> Bool 
 primo 1 = False 
 primo x | (tamanhoV [ y | y <- [1..x], x`mod`y == 0, y /=x ]) > 0 = False 
-	| otherwise = True  
+	| otherwise = True
+
+isCrescent :: (Int -> Int) -> Int -> Bool 
+isCrescent f 0 = True
+isCrescent f n = (f n >= f(n-1)) && (isCrescent f (n - 1))
+
+swap :: (t -> u -> v) -> u -> t -> v
+swap f = (\x -> \y -> (f y) x)
+  
