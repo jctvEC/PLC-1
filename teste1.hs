@@ -156,4 +156,40 @@ isCrescent f n = (f n >= f(n-1)) && (isCrescent f (n - 1))
 
 swap :: (t -> u -> v) -> u -> t -> v
 swap f = (\x -> \y -> (f y) x)
-  
+
+--deriving é usado para substitruir a funcao eh igual
+data Pessoas = Pessoa String Int 
+	deriving (Eq,Show)
+
+jose = Pessoa "Jose" 23
+maria = Pessoa "Maria" 25
+
+ehIgual :: Pessoas -> Pessoas -> Bool
+ehIgual (Pessoa n1 i1) (Pessoa n2 i2) | n1 == n2 && i1 == i2 = True
+				      | otherwise = False
+
+data Shape = Circle Float
+	     | Rectangle Float Float
+
+area :: Shape -> Float
+area (Circle r) = pi * r^2
+area (Rectangle a b) = a * b
+
+data Pairs t = Pair t t
+
+myFst :: Pairs u -> u
+myFst (Pair x y) = x
+
+data Tree t = NilT | Node t (Tree t) (Tree t)
+
+data Expr = Lit Int
+	   | Add Expr Expr
+	   | Sub Expr Expr
+	deriving (Show)
+
+eval :: Expr -> Int
+eval (Lit n) = n
+eval (Add e1 e2) = (eval e1) + (eval e2)
+eval (Sub e1 e2) =  (eval e1) - (eval e2)
+
+
