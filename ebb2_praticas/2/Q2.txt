@@ -1,0 +1,89 @@
+a) (.) thrice map = thrice.map
+
+Analisando o tipo de função:
+map :: (z -> w) -> [z] -> [w]
+thrice :: (x -> x) -> x -> x
+( . ) :: (b -> i) -> (a -> b) -> a -> i
+
+
+Do primeiro argumento (thrice) temos:
+(b -> i) = (x -> x) -> x -> x
+b = (x -> x) -> x
+i = x
+
+Do segundo argumento (map) temos:
+(a -> b) =  (z -> w) -> [z] -> [w]
+a = (z -> w) -> [z]
+b = [w]
+
+Como b = (x -> x) -> x e b = [w], então:
+[w] = (x -> x) -> x
+
+Pelo retorno da composição de funções,
+a -> i
+(z -> w) -> [z] -> x
+
+Como temos [w] = (x -> x) -> x, não sabemos quem é w, logo, não dá pra definir o tipo da função.
+
+
+b) swap map thrice
+
+Os tipos de função são:
+map :: (x -> y) -> [x] -> [y]
+thrice :: (z -> z) -> z -> z
+swap :: a -> (a -> b) -> b
+
+Do primeiro argumento (map) temos:
+a = (x -> y) -> [x] -> y
+
+Do segundo argumento (thrice) temos:
+(a -> b) = (z -> z) -> z -> z
+a = (z -> z) -> z
+b = z
+
+como a = (x -> y) -> [x] -> y e a = (z -> z) -> z, logo: 
+(z -> z) -> z = (x -> y) -> [x] -> y
+(z -> z) = (x -> y) -> [x]
+z = y
+
+Então:
+(y -> y) = (x -> y) -> [x]
+y = (x -> y)
+y = [x]
+
+Como a função é a -> (a -> b) -> b, logo o tipo final:
+a -> (a -> b) -> b
+(z -> z) -> z -> ((z -> z) -> z -> b) -> b
+(z -> z) -> z -> ((z -> z) -> z -> z) -> z
+(y -> y) -> y -> ((y -> y) -> y -> y) -> y
+([x] -> [x]) -> [x] -> ((([x] -> [x]) -> [x]) -> [x]) -> [x]
+[a->a] -> ([a->a]->[x]) -> [x]
+[a->a] -> [a->a]
+
+
+c) tail.head
+tail :: [x] -> [x]
+head :: [y] -> y
+(.) :: (b -> i) -> (a -> b) -> a -> i
+
+Do primeiro argumento (tail), temos:
+(b -> i) = [x] -> [x]
+Logo:
+b = [x]
+i = [x]
+
+Do segundo argumento (head), temos:
+(a -> b) = [y] -> y
+Logo
+a = [y]
+b = y
+
+Como b = y e b = [x], então:
+y = [x]
+
+Como temos a função a -> i, logo:
+a -> i
+[y] -> i
+[y] -> [x]
+[[x]] -> [x]
+Tipo final da função: [[x]] -> [x]
