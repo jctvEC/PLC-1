@@ -1,7 +1,7 @@
 vendas :: Int -> Int
 vendas x | x == 0 = 55 | x == 1 = 90 | x == 2 = 10 | x == 3 = 115 | x == 4 = 90 | otherwise = error "venda maior que o esperado"
 
---mesma coisa que a de cima, pega logo os padrões
+--mesma porra coisa que a de cima, pega logo os padrões
 {-
 vendas' :: Int -> Int
 vendas' 0 = 55
